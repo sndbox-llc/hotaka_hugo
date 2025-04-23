@@ -121,3 +121,52 @@ img {
       display: block;
     }
   }
+
+
+  .timeline {
+    position: relative;
+    margin-left: 80px;
+    padding-left: 20px;
+  
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background-color: #ccc;
+    }
+  
+    .timeline-step {
+      position: relative;
+      margin-bottom: 3rem;
+  
+      &:last-child::after {
+        content: none !important;
+      }
+  
+      .timeline-icon {
+        position: absolute;
+        left: -80px;
+        top: 0.1rem;
+        width: 65px;
+        background-color: #5bc0de;
+        color: white;
+        font-weight: bold;
+        padding: 0.4rem 0.5rem;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 0.85rem;
+        z-index: 1;
+      }
+  
+      .timeline-content {
+        h5 {
+          margin-bottom: 0.5rem;
+          padding-left: 0.5rem;
+        }
+      }
+    }
+  }
+  

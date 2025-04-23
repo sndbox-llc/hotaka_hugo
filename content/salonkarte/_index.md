@@ -6,4 +6,8 @@ tags = []
 +++
 
 
-salonkarte記事ページ
+- [news](/salonkarte/news)
+- [price](/salonkarte/price)
+- [faq](/salonkarte/faq)
+- [agree](/salonkarte/agree)
+

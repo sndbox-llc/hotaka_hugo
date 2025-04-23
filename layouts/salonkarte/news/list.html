@@ -1,8 +1,7 @@
 {{ define "main" }}
 <div class="container py-5">
+  <h2 class="mb-4">{{ .Title }} NEWS LIST</h2>
   <p>テンプレート: {{ .Kind }} / {{ .Layout }} / type={{ .Type }} / section={{ .Section }}</p>
-
-  <h2 class="mb-4">{{ .Title }} list</h2>
 
   <div class="row">
     {{ range .Pages.ByDate.Reverse }}
