@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="container py-5">
+  <div class="text-center fw-bold border-top border-bottom border-3 border-primary py-4 mb-4">
+  <h2>
+    {{ .Title }}
+  </h2>
+  <p class="text-center text-muted mb-0">
+    {{ .Date.Format "2006年1月2日" }} 更新
+  </p>
+</div>
+
+  <div class="">
+    {{ .Content }}
+  </div>
+
+</div>
+{{ end }}

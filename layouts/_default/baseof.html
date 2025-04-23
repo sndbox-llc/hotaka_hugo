@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ .Language.LanguageCode | default site.Language.LanguageCode }}">
+{{ partial "head/head.html" . }}
+
+
+<body class="{{ .Scratch.Get `class` }} {{ .Section }} d-flex flex-column min-vh-100">
+  {{ partial "header/header.html" . }}
+
+  <div id="content" class="">
+    {{ if and (.Site.Params.options.breadCrumb) (ne .Kind "home") }}
+      {{ partial "header/breadcrumb.html" . }}
+    {{ end }}
+
+    {{ block "heroVideo" . }}{{ end }}
+
+    {{ block "main" . }}{{ end }}
+    {{ block "companyProfile" . }}{{ end }}
+    {{ block "accessMap" . }}{{ end }}
+    {{ block "contactForm" . }}{{ end }}
+    
+
+  </div>
+
+  {{ partial "footer/footer.html" . }}
+  {{ partial "footer/script-footer.html" . }}
+</body>
+</html>
