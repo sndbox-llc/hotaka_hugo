@@ -146,7 +146,7 @@
       <div class="mb-3 row">
         <label for="company" class="col-md-3 col-form-label">企業名（法人の場合）</label>
         <div class="col-md-9">
-          <input type="text" class="form-control" id="company" />
+          <input type="text" class="form-control" id="companyName" />
         </div>
       </div>
 
@@ -158,9 +158,9 @@
       </div>
 
       <div class="mb-3 row">
-        <label for="name" class="col-md-3 col-form-label">お名前（法人の場合はご担当者名） <span class="text-danger">*必須</span></label>
+        <label for="yourName" class="col-md-3 col-form-label">お名前（法人の場合はご担当者名） <span class="text-danger">*必須</span></label>
         <div class="col-md-9">
-          <input type="text" class="form-control" id="name" required />
+          <input type="text" class="form-control" id="yourName" required />
         </div>
       </div>
 
@@ -172,23 +172,23 @@
       </div>
 
       <div class="mb-3 row">
-        <label for="email" class="col-md-3 col-form-label">メールアドレス <span class="text-danger">*必須</span></label>
+        <label for="yourEmailAddr" class="col-md-3 col-form-label">メールアドレス <span class="text-danger">*必須</span></label>
         <div class="col-md-9">
-          <input type="email" class="form-control" id="email" required />
+          <input type="email" class="form-control" id="yourEmailAddr" required />
         </div>
       </div>
 
       <div class="mb-3 row">
-        <label for="phone" class="col-md-3 col-form-label">お電話番号</label>
+        <label for="phoneNo" class="col-md-3 col-form-label">お電話番号</label>
         <div class="col-md-9">
-          <input type="tel" class="form-control" id="phone" />
+          <input type="tel" class="form-control" id="phoneNo" />
         </div>
       </div>
 
       <div class="mb-3 row">
-        <label for="message" class="col-md-3 col-form-label">お問い合わせ内容</label>
+        <label for="toiawasehonbun" class="col-md-3 col-form-label">お問い合わせ内容</label>
         <div class="col-md-9">
-          <textarea class="form-control" id="message" rows="5"></textarea>
+          <textarea class="form-control" id="toiawasehonbun" rows="5"></textarea>
         </div>
       </div>
 
@@ -206,7 +206,6 @@
       <div class="row">
         <div class="offset-md-3 col-md-9">
           <button type="button" class="btn btn-primary me-3" onclick="submitContactForm()">メールを送信する</button>
-          <button type="reset" class="btn btn-secondary">リセット</button>
         </div>
       </div>
 
@@ -222,56 +221,54 @@
 </section>
 
 <!-- Axios CDN -->
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+
 <script>
-async function submitContactForm() {
-  const type = document.querySelector('input[name="type"]:checked').value;
-  const company = document.getElementById('company').value;
-  const division = document.getElementById('division').value;
-  const name = document.getElementById('name').value;
-  const position = document.getElementById('position').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  const message = document.getElementById('message').value;
-  const confirm = document.getElementById('confirmCheck').checked;
+  const form = document.getElementById("contactForm");
+  const thanks = document.getElementById("thanks");
+  const sendButton = document.querySelector("button");
+  const errorMessage = document.getElementById("errormessage");
 
-  const thanks = document.getElementById('thanks');
-  const errorMessage = document.getElementById('errormessage');
+  const EMAIL_REG_EXP = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
 
-  if (!email || !name || !confirm) {
-    errorMessage.textContent = '必須項目に不備があります。';
-    return;
-  }
+  async function submitContactForm() {
+    sendButton.disabled = true;
 
-  const text = `
-【お問合せの種類】${type}
-【企業名】${company}
-【部署】${division}
-【名前】${name}
-【役職】${position}
-【メール】${email}
-【電話】${phone}
-【内容】\n${message}
-`;
+    const name = document.getElementById("yourName").value;
+    const company = document.getElementById("companyName").value;
+    const tel = document.getElementById("phoneNo").value;
+    const email = document.getElementById("yourEmailAddr").value;
+    const content = document.getElementById("toiawasehonbun").value;
+    console.log(content)
 
-  try {
-    await axios({
+    try {
+      if (!EMAIL_REG_EXP.test(email)) throw "メールアドレスが不正です";
+      if (content.length === 0) throw "お問い合わせ内容が空欄です";
+    } catch (e) {
+      errorMessage.textContent = e;
+      sendButton.disabled = false;
+      return;
+    }
+
+    const config = {
       method: "POST",
-      url: "https://us-central1-nipo-plus.cloudfunctions.net/inqueryWeb",
-      params: {
-        email: email,
-        text: text
+      url: "https://us-central1-nipo-plus.cloudfunctions.net/inqueryWebCommon",
+      data: {
+        name,
+        company,
+        tel,
+        email,
+        text: content,
+        site: "hotaka-law"
       }
-    });
+    };
 
-    document.getElementById('contactForm').style.display = 'none';
-    thanks.textContent = `お問い合わせありがとうございます。${email} 宛に確認メールを送信いたしました。`;
-
-  } catch (e) {
-    errorMessage.textContent = '送信中にエラーが発生しました。再度お試しください。';
+    axios(config);
+    form.style.display = "none";
+    thanks.textContent = `お問い合わせありがとうございます。${email} 宛に確認メールを送信いたしました。5分以内に届かない場合は再度お問い合わせください。`;
   }
-}
 </script>
 
 {{ end }}
