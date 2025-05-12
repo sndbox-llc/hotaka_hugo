@@ -1,0 +1,14 @@
+.hover-shadow:hover {
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+.transition {
+  transition: all 0.3s ease;
+}
+
+// カードの画像の高さを揃える
+.card-img-top {
+  height: 300px; // お好みの高さに調整
+  object-fit: cover;
+}

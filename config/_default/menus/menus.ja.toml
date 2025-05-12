@@ -3,25 +3,25 @@
 # url = ""
 # weight = 10
 
-[[main]]
-name = "サロンカルテ"
-url = "salonkarte"
-weight = 50
-title = "menu"
+# [[main]]
+# name = "サロンカルテ"
+# url = "salonkarte"
+# weight = 50
+# title = "menu"
 
-[[main]]
-name = "クラウドステーション"
-identifier = "cloudstation"
-url = "cloudstation"
-weight = 40
+# [[main]]
+# name = "クラウドステーション"
+# identifier = "cloudstation"
+# url = "cloudstation"
+# weight = 40
 
 
 
-[[main]]
-name = "士業業務管理システム"
-identifier = "taskman"
-url = "taskman"
-weight = 60
+# [[main]]
+# name = "士業業務管理システム"
+# identifier = "taskman"
+# url = "taskman"
+# weight = 60
 
 
 

@@ -1,4 +1,11 @@
 {{ define "main" }}
+
+
+<section class="section container my-3">
+  <h3 class="text-secondary text-center my-5">ラインナップ</h3>
+  {{ partial "lineup" . }}
+</section>
+
 <section class="section container my-3">
   <h3 class="text-secondary text-center my-5">Infomation</h3>
   {{ partial "latest-posts" . }}
@@ -7,6 +14,7 @@
   <h3 class="text-secondary text-center my-5">Featured Pages</h3>
   {{ partial "featured-pages" . }}
 </section>
+
 {{ end }}
 
 

@@ -23,6 +23,7 @@
     "url": "https://github.com/filipecarneiro/hugo-bootstrap-theme.git"
   },
   "scripts": {
+    "exe": "rm -rf public && hugo server",
     "postinstall": "npx hugo-installer --version otherDependencies.hugo --extended",
     "start": "exec-bin bin/hugo/hugo server --source exampleSite --cleanDestinationDir --gc",
     "build": "exec-bin bin/hugo/hugo --minify --source exampleSite --baseURL '/' --cleanDestinationDir --gc --printPathWarnings --templateMetrics",
