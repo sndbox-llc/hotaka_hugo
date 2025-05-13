@@ -1,17 +1,15 @@
 {{ if .Site.Params.alert -}}
 {{ partial "header/alert.html" . }}
 {{ end -}}
-
+<!--
 <header class="main-header">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
 
-      <!-- Menu Toggler -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Main Menu -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="menu-main navbar-nav me-auto mb-2 mb-lg-0">
           {{- $current := . -}}
@@ -45,7 +43,6 @@
           {{ end -}}
         </ul>
 
-        <!-- Language Menu -->
         {{ if hugo.IsMultilingual -}}
         <div class="menu-language order-md-2">
           <ul class="navbar-nav">
@@ -87,7 +84,6 @@
         </div>
         {{ end -}}
 
-        <!-- Social Menu -->
         {{ if isset .Site.Menus "social" }}
         <div class="menu-social d-flex">
           <ul class="navbar-nav">
@@ -106,7 +102,7 @@
     </div>
   </nav>
 </header>
-
+-->
 
 <header class="py-4 mb-0 border-bottom" style="background-size: contain; background-color:#1A1E21;color:white;">
   <div class="container">
