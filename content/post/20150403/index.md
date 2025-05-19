@@ -1,11 +1,13 @@
 ---
 title: "下野新聞　４月３日　弊社が紹介されました。"
-description: "下野新聞　４月３日　弊社が紹介されました。"
+description: "下野新聞にて弊社が紹介された、安心・低予算なスマートハウス電源システム。非常時でも冷蔵庫・給湯・携帯充電を維持可能。災害対策・省エネ住宅に。"
 date: 2015-04-03T13:00:00
 draft: false
+image: "newspaper.jpg"
+
 ---
 
-{{< lightbox src="119401f2d4f5f3dd3a340981f7312613.jpg" alt="テスト画像" >}}
+{{< lightbox src="newspaper.jpg" alt="下野新聞記事切り抜き" >}}
 
 安心できるスマートハウス。
 

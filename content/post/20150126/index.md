@@ -1,8 +1,7 @@
 ---
 title: "スマートマンション完成　THE 神戸"
-description: "日本初！スマートマンション完成！"
+description: "神戸駅すぐ近く、日本初のスマートマンションが誕生。外出先からの家電操作など、先進的な住環境を実現。快適な一人暮らしを叶える最新設備が満載。"
 date: 2015-01-26T13:00:00
-draft: false
 image: "jcube_01.jpg"
 ---
 
@@ -20,5 +19,5 @@ image: "jcube_01.jpg"
 
 今後はこのようなスマートマンションが普通になるような。。。。
 
-{{< lightbox src="jcube_01.jpg" alt="テスト画像" >}}
-{{< lightbox src="jcube_04.jpg" alt="テスト画像" >}}
+{{< lightbox src="jcube_01.jpg" alt="JCCube-神戸パンフレット" >}}
+{{< lightbox src="jcube_04.jpg" alt="スマート家電チラシ" >}}

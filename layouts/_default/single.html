@@ -1,7 +1,32 @@
 {{ define "main" }}
-<div class="container py-3">
-  baseof single
-  {{ .Content }}
-</div>
+<div class="container py-5">
 
+  <!-- 記事カード -->
+  <div class="card shadow-sm border-0 mb-5">
+    <div class="card-body px-4 py-5">
+
+      <!-- タイトル -->
+      <h1 class="fw-bold mb-3" style="font-family: 'Hiragino Mincho ProN', serif; color: #37145a;">
+        {{ .Title }}
+      </h1>
+
+      <!-- 日付 -->
+      <p class="text-muted small mb-4">
+        {{ .Date.Format "2006年1月2日" }} 更新
+      </p>
+
+      <!-- 本文 -->
+      <div class="article-content" style="line-height: 1.8;">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+
+  <!-- 戻るボタン -->
+  <div class="text-center mt-4">
+    <a href="/posts/" class="btn btn-outline-secondary px-4 py-2">
+      ← 記事一覧に戻る
+    </a>
+  </div>
+</div>
 {{ end }}

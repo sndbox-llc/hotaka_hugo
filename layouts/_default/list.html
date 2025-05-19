@@ -1,90 +1,37 @@
 {{ define "main" }}
+<div class="container py-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-<div class="container py-3">
+    {{ range .Pages }}
+    <div class="col">
+      <div class="card h-100 shadow-sm border-0">
 
-    {{ if or .Site.Params.options.listCategoryFilter .Site.Params.options.listTagFilter }}
-        <div class="row mb-3">
-
-            {{ if .Site.Params.options.listCategoryFilter }}
-                <div class="col-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
-                    {{range ($.Site.GetPage "taxonomyTerm" "categories").Pages.ByTitle }}
-                        <a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
-                    {{end}}
-                </div>
-            {{ end }}
-
-            {{ if .Site.Params.options.listTagFilter }}
-                <div class="col-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="feather me-2"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
-                    {{range ($.Site.GetPage "taxonomyTerm" "tags").Pages.ByTitle }}
-                        <a class="badge text-bg-light nav-link" href="{{.RelPermalink}}">{{.Title}}</a>&nbsp;
-                    {{end}}
-                </div>
-            {{ end }}
-
-        </div>
-    {{ end }}
-
-    {{ if ne .Kind "taxonomy" }}
-
-        {{ range .Pages }}
-        <div class="card border-light-subtle mb-3">
-            <div class="row g-0">
-
-                <div class="col-md-4 d-flex align-items-center">
-                    {{ if isset .Params "images" }}
-                        {{ with .Resources.GetMatch (index .Params.Images 0) }}
-                            {{ $image := .Fill "600x300 Center webp" }}
-                            <img class="img-fluid rounded p-1" src="{{ $image.RelPermalink }}" loading="lazy" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="featured image {{.Title }}">
-                        {{ end }}
-                    {{ else }}
-                        <img class="img-fluid rounded p-1" src="{{ "images/icatch.jpg" | relURL }}" loading="lazy" width="600" height="300" alt="default image">
-                    {{ end }}
-                </div>
-
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h2 class="card-title text-primary">{{ .Title }}</h2>
-
-                        <div class="card-subtitle text-muted mb-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="feather"><use href="{{ `images/feather/feather-sprite.svg#calendar` | relURL }}"/></svg>
-                            <time class="ms-2" datetime="{{ .Date.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .Date | time.Format ":date_long" }}</time>
-                            <!--
-                            （更新：<time class="ms-2" datetime="{{ .Lastmod.Format `2006-01-02T15:04:05Z0700` | safeHTML }}">{{ .Lastmod | time.Format ":date_long" }}</time>）
-                            -->
-
-
-                            {{ if isset .Params "categories" }}
-                                <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="{{ `images/feather/feather-sprite.svg#folder` | relURL }}"/></svg>
-                                {{ range .Params.categories }}
-                                    <a class="text-decoration-none text-muted ms-2" href="{{ `/categories/` | relLangURL }}{{ . | urlize}}/">{{ . }}</a>
-                                {{end}}
-                            {{ end }}
-
-                            {{ if isset .Params "tags" }}
-                                <svg xmlns="http://www.w3.org/2000/svg" class="feather ms-4"><use href="{{ `images/feather/feather-sprite.svg#tag` | relURL }}"/></svg>
-                                {{ range .Params.tags }}
-                                    <a class="text-decoration-none text-muted ms-2" href="{{ `/tags/` | relLangURL }}{{ . | urlize}}/">{{ . }}</a>
-                                {{ end }}
-                            {{ end }}
-                        </div>
-
-                        <div class="card-text">
-                            {{ with .Params.description }}
-                                {{ . }}
-                            {{ end }}
-                        </div>
-                        
-                        <a class="stretched-link" href="{{.RelPermalink}}"></a>
-                    </div>
-                </div>
-
+        <!-- アイキャッチ画像 -->
+        <div class="ratio ratio-16x9">
+          {{ with .Resources.GetMatch .Params.image }}
+            <img src="{{ .RelPermalink }}" class="object-fit-cover w-100 h-100 rounded-top" alt="{{ $.Title }}" style="object-fit: cover;">
+          {{ else }}
+            <div class="d-flex align-items-center justify-content-center bg-light w-100 h-100 rounded-top">
+              <img src="/images/cloud.svg" alt="アイキャッチ" width="64" height="64" style="opacity: 0.6;">
             </div>
+          {{ end }}
         </div>
-        {{ end }}
 
+        <!-- テキストエリア -->
+        <div class="card-body">
+          <p class="text-muted small mb-1">{{ .Date.Format "2006.01.02" }}</p>
+          <h5 class="card-title fw-bold text-dark">{{ .Title }}</h5>
+          {{ with .Params.description }}
+            <p class="card-text text-muted">{{ . }}</p>
+          {{ end }}
+        </div>
+
+        <!-- リンク全体 -->
+        <a href="{{ .RelPermalink }}" class="stretched-link" aria-label="{{ .Title }}"></a>
+      </div>
+    </div>
     {{ end }}
 
+  </div>
 </div>
 {{ end }}
