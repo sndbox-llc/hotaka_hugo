@@ -19,8 +19,8 @@
 
 # [[main]]
 # name = "士業業務管理システム"
-# identifier = "taskman"
-# url = "taskman"
+# identifier = "LawManager"
+# url = "LawManager"
 # weight = 60
 
 
