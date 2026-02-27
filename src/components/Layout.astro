@@ -25,10 +25,10 @@ const { title, frontmatter, showBanner = true } = Astro.props
   </head>
   <body>
     <Navbar />
-    <div id="content" class="containeraa">
+    <div id="content" class="">
       {showBanner && <TopBanner />}
-      <div class="row">
-        <main class="col-md-12">
+      <div>
+        <main>
           <slot />
         </main>
       </div>
