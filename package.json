@@ -1,24 +1,19 @@
 {
-  "name": "hotaka_home_hugo",
-  "version": "2.0.0",
-  "description": "ほたかグループの公式Webサイト",
-  "homepage": "https://home.hotaka-g.jp",
-  "author": "sndbox LLC",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sndbox-llc/hotaka_hugo"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-
+  "name": "shaky-shepherd",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "exe": "rm -rf public && hugo server"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "astro": "^5.17.1",
+    "bootstrap": "^5.3.8"
   },
   "devDependencies": {
-  },
-  "otherDependencies": {
-    "hugo": "0.153.2"
+    "sass": "^1.97.3"
   }
 }

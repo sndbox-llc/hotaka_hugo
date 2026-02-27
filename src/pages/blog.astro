@@ -1,0 +1,12 @@
+---
+import Layout from '../components/Layout.astro'
+import BlogCardList from '../components/BlogCard.astro'
+---
+
+<Layout title="ブログ記事一覧">
+  <div class="container my-5">
+    <h1 class="text-center mb-5 font-accent ryuColor">Blog</h1>
+    {/* 引数なしで全件表示 */}
+    <BlogCardList />
+  </div>
+</Layout>

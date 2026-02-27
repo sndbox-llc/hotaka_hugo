@@ -1,0 +1,83 @@
+---
+// src/components/BlogCardList.astro
+import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
+
+interface Props {
+  count?: number
+}
+
+const { count } = Astro.props
+
+const allBlogPosts = await getCollection('blog')
+let sortedPosts = [...allBlogPosts].sort((a, b) => {
+  return b.data.date.getTime() - a.data.date.getTime()
+})
+
+if (count) {
+  sortedPosts = sortedPosts.slice(0, count)
+}
+---
+
+<div class="row g-4">
+  {
+    sortedPosts.map((post) => (
+      <div class="col-md-6 col-lg-4">
+        <a href={`/${post.slug}`} class="text-decoration-none text-reset h-100 d-block news-card-wrapper">
+          <article class="card h-100 shadow-sm border-0 news-card">
+            {/* アイキャッチ画像セクション：Hugoのロジックを再現 */}
+            <div class="ratio ratio-16x9 overflow-hidden rounded-top">
+              {post.data.image ? (
+                /* 画像がある場合：全面にカバー表示 */
+                <Image src={post.data.image} alt={post.data.title} width={400} height={225} class="card-img-top object-fit-cover w-100 h-100 transition-transform" />
+              ) : (
+                /* 画像がない場合：Hugoコードと同じくbg-lightとcloud.svgを使用 */
+                <div class="d-flex align-items-center justify-content-center bg-light w-100 h-100 rounded-top">
+                  <img src="/images/cloud.svg" alt="アイキャッチなし" width="64" height="64" style="opacity: 0.6;" />
+                </div>
+              )}
+            </div>
+
+            <div class="card-body p-4">
+              <small class="text-muted d-block mb-2">{post.data.date.toLocaleDateString('ja-JP').replaceAll('/', '.')}</small>
+              <h5 class="card-title fw-bold mb-3 line-clamp-2">{post.data.title}</h5>
+              <p class="card-text text-muted small line-clamp-3">{post.data.description || '記事の内容を読む...'}</p>
+            </div>
+          </article>
+        </a>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .news-card-wrapper {
+    transition: transform 0.3s ease;
+  }
+  .news-card-wrapper:hover {
+    transform: translateY(-5px);
+  }
+  .news-card {
+    overflow: hidden; /* 画像の拡大がカードからはみ出さないように */
+  }
+  .news-card:hover img.transition-transform {
+    transform: scale(1.1);
+  }
+  .transition-transform {
+    transition: transform 0.5s ease;
+  }
+
+  /* テキスト省略 */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
