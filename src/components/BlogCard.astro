@@ -25,13 +25,13 @@ if (count) {
       <div class="col-md-6 col-lg-4">
         <a href={`/${post.slug}`} class="text-decoration-none text-reset h-100 d-block news-card-wrapper">
           <article class="card h-100 shadow-sm border-0 news-card">
-            {/* アイキャッチ画像セクション：Hugoのロジックを再現 */}
+            {/* アイキャッチ画像セクション */}
             <div class="ratio ratio-16x9 overflow-hidden rounded-top">
               {post.data.image ? (
                 /* 画像がある場合：全面にカバー表示 */
                 <Image src={post.data.image} alt={post.data.title} width={400} height={225} class="card-img-top object-fit-cover w-100 h-100 transition-transform" />
               ) : (
-                /* 画像がない場合：Hugoコードと同じくbg-lightとcloud.svgを使用 */
+                /* 画像がない場合：bg-lightとcloud.svgを使用 */
                 <div class="d-flex align-items-center justify-content-center bg-light w-100 h-100 rounded-top">
                   <img src="/images/cloud.svg" alt="アイキャッチなし" width="64" height="64" style="opacity: 0.6;" />
                 </div>
