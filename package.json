@@ -1,5 +1,5 @@
 {
-  "name": "shaky-shepherd",
+  "name": "astoro-hotaka",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
-    "astro": "^5.17.1",
+    "astro": "^5.18.0",
     "bootstrap": "^5.3.8"
   },
   "devDependencies": {
