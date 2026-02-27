@@ -1,13 +1,12 @@
-// BootstrapをSCSSとして読み込む（変数の上書きが可能になります）
+
+@use 'cardHover';
+@use 'dl';
+@use 'ueda';
+@use 'herobg';
+@use 'variable-overrides';
+
 @import "bootstrap/scss/bootstrap";
 
-@import './cardHover.scss';
-@import './dl.scss';
-@import './ueda.scss';
-@import './herobg.scss';
-@import './variable-overrides.scss';
-
-// サイト全体の共通調整
 
 html {
     overflow-y: scroll;
