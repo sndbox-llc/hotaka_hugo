@@ -1,3 +1,4 @@
+// 住宅ヒーローセクション
 .hero-bg {
   position: relative;
   background-image: url('/images/bg.webp');
@@ -17,5 +18,66 @@
   .container {
     position: relative;
     z-index: 2;
+  }
+}
+
+
+
+
+
+
+// ビデオセクション
+.video-hero-wrapper {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+
+  .video-hero {
+    position: relative;
+    width: 100%;
+    max-width: 2400px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    .video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .video-text {
+      padding-left: 3rem;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      font-family: 'Hiragino Mincho ProN', serif;
+      max-width: 700px;
+
+      .catchcopy {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1.6;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .video-text {
+        padding-left: 1rem;
+        .catchcopy {
+          font-size: 1.3rem;
+        }
+      }
+    }
   }
 }

@@ -7,7 +7,6 @@ dl.basic {
   margin-top: 4rem;
   margin-bottom: 4rem;
 
-
   dt {
     // background-color: aliceblue;
     font-size: 16px;
@@ -41,7 +40,7 @@ dl.basic {
     text-decoration: none; /* ホバー時に下線を消す */
   }
 
-    /* dd 内の ul では margin を 0 にする */
+  /* dd 内の ul では margin を 0 にする */
   dd ul {
     margin-top: 0;
     margin-bottom: 0;
@@ -141,4 +140,7 @@ dl.faq {
       text-decoration: underline;
     }
   }
+
+
+  
 }

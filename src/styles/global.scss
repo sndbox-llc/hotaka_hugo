@@ -1,18 +1,30 @@
-
 @use 'cardHover';
 @use 'dl';
-@use 'ueda';
 @use 'herobg';
-@use 'variable-overrides';
-
-@import "bootstrap/scss/bootstrap";
-
+@import 'bootstrap/scss/bootstrap';
 
 html {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 img {
   max-width: 100%;
-  height: auto; /* これを追加 */
+  height: auto;
+}
+
+.contact-form {
+  input,
+  textarea,
+  select {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+  }
+
+  // チェックボックスは横並びに
+  input[type='checkbox'] {
+    width: auto;
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
 }
