@@ -39,7 +39,7 @@ if (count) {
             </div>
 
             <div class="card-body p-4">
-              <small class="text-muted d-block mb-2">{post.data.date.toLocaleDateString('ja-JP').replaceAll('/', '.')}</small>
+              <p class=" small text-muted d-block mb-2">{post.data.date.toLocaleDateString('ja-JP').replaceAll('/', '.')}</p>
               <h5 class="card-title fw-bold mb-3 line-clamp-2">{post.data.title}</h5>
               <p class="card-text text-muted small line-clamp-3">{post.data.description || '記事の内容を読む...'}</p>
             </div>
