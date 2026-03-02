@@ -12,3 +12,7 @@ html {
     overflow-y: scroll;
 }
 
+img {
+  max-width: 100%;
+  height: auto; /* これを追加 */
+}

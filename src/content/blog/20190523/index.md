@@ -33,6 +33,8 @@ image: 'konshin1.jpeg'
 
 
 ![懇親会風景1](./konshin1.jpeg)
+
+
 ![懇親会風景2](./konshin2.jpeg)
 
 
